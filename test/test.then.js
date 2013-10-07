@@ -120,7 +120,6 @@ suite('Queueing Synchronous Tasks', function(){
         this.timeout(10000);
         var jQuery = "https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js";
         var bootstrap = "https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js";
-        var mobile = "https://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.3.2/jquery.mobile.min.js";
         var times = 0;
 
         var q = asyncJS(jQuery);
@@ -128,24 +127,21 @@ suite('Queueing Synchronous Tasks', function(){
             assert.equal(0, times);
             assert(!!jQuery);
             assert(!$.fn.emulateTransitionEnd);
-            assert(!$.mobile);
             times++;
         });
 
         q.whenDone(function () {
             assert(!!jQuery);
             assert(!$.fn.emulateTransitionEnd);
-            assert(!$.mobile);
             times++;
         });
         // then blocks all follow whenDone callbacks
-        q.then([bootstrap, mobile]);
+        q.then([bootstrap, function() { times++; }]);
 
         q.whenDone(function () {
-            assert.equal(2, times);
+            assert.equal(3, times);
             assert(!!jQuery);
             assert(!!$.fn.emulateTransitionEnd);
-            assert(!!$.mobile);
             done();
         });
     });
