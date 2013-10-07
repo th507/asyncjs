@@ -99,7 +99,7 @@ q.whenDone(function() {
 
 # API
 
-## asyncJS(task[, callback])
+### asyncJS(task[, callback])
 Add one or more tasks to the asynchronous loading queue. Returns the queue.
 
 ````javascript
@@ -118,7 +118,7 @@ asyncJS([
 ])
 ````
 	
-## asyncJS#add(tasks)
+### asyncJS#add(tasks)
 Add one or more tasks to the asynchronous loading queue and returns the queue. Note that `add` does not guarantee that added function is executed after the previous task. For sequential execution, use [async#addSync](#addSync) instead.
 
 ````javascript
@@ -126,7 +126,7 @@ var q = asyncJS("jquery.js");
 q.add("high-chart.js");
 ````
 
-## asyncJS#addSync(tasks)[](id:addSync)
+### asyncJS#addSync(tasks)[](id:addSync)
 Alias of [`then`](#then)
 
 ## asyncJS#then(tasks)[](id:then)
@@ -143,7 +143,7 @@ q.then("bootstrap.js");
 `then` will not block previous callbacks execution, but it will block all  following `whenDone` functions until `then` tasks have finished.
 
 
-## asyncJS#whenDone(callback)[](id:whenDone)
+### asyncJS#whenDone(callback)[](id:whenDone)
 Add callback to execute when all **previous** tasks are finished. `taskIndex` is the index of the last finished task, while `queue` is the current loading queue and `error` the accumulative errors in execution.
 
 ````javascript
