@@ -129,7 +129,7 @@ q.add("high-chart.js");
 ### asyncJS#addSync(tasks)[](id:addSync)
 Alias of [`then`](#then)
 
-## asyncJS#then(tasks)[](id:then)
+### asyncJS#then(tasks)[](id:then)
 Add one or more **synchronous** tasks to the loading queue, and returns the queue. `then` guarantee that added function is executed after the previous task.
 
 ````javascript
