@@ -7,7 +7,7 @@
 `asyncJS` uses a Defer-like queue to keep track of tasks, allowing you to append additional tasks, attaching extra callbacks, and handling error inside callbacks, making it a more versatile and robust solution for complex dependency management.
 
 # Why
-I use [script.js](https://github.com/ded/script.js/) for my last project. I love the idea of lazy loading script, but I'm not a big fan of this laconic coding style (semicolon is a rare commodity in this case), and its awkward syntax for nested dependency. 
+I use [script.js](https://github.com/ded/script.js/) for my last project. I love the idea of lazy loading script, but I'm not a big fan of the laconic coding style and its awkward syntax for nested dependency. 
 
 That's why I created `asyncJS`.
 
