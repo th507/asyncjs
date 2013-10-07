@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Load inline script</title>
+<script src="assets/load-timing.js" async></script>
+<script src="assets/utils.js"></script>
+<script src="../lib/asyncjs.js"></script>
+<script>
+var q = asyncJS(function() { sleep(1000)}, function() {
+	log("wake up from sleep in " + from() + "ms");
+	log("wake up at " + Date.now());
+    log("Function finished at: " + Date.now());
+});
+</script>
+<link href="assets/test.css" rel="stylesheet">
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<h3><span class="btn btn-success disabled">Best</span>No script below external CSS.</h3>
+<p>Eliminate all script below external CSS.</p>
+<hr>
+</body>
+</html>

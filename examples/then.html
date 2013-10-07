@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>then</title>
+<script src="assets/load-timing.js" async></script>
+<script src="assets/utils.js"></script>
+<script src="../lib/asyncjs.js"></script>
+<script>
+var q = null;
+var j = "https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js";
+var b = "https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js";
+var m = "https://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.3.2/jquery.mobile.min.js";
+var i = 0;
+
+q = asyncJS(j);
+q.whenDone(function () {
+    log(++i + ". before adding bootstrap");
+    log("jQuery: " + !!jQuery + 
+    "\n$.fn.emulateTransitionEnd: " +
+    !!$.fn.emulateTransitionEnd + 
+    "\n$.mobile: " +
+    !!$.mobile, "pre");
+
+});
+
+// then blocks all follow whenDone callbacks
+q.then([b, m]);
+
+q.whenDone(function () {
+    log(++i + ". after adding bootstrap");
+    log("jQuery: " + $.fn.jquery +
+    "\n$.fn.emulateTransitionEnd: " +
+    !!$.fn.emulateTransitionEnd +
+    "\n$.mobile.version: " +
+    $.mobile.version, "pre");
+});
+
+q.whenDone(function () {
+    log(++i + ". another callback after <code>then</code><br>");
+});
+</script>
+<link href="assets/test.css" rel="stylesheet">
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<h3><code>then</code> blocks all following callbacks</h3>
+<p></p>
+<hr>
+</body>
+</html>

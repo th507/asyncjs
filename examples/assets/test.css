@@ -1,0 +1,58 @@
+html {
+	width: 90%;
+    margin: 20px auto 0;
+}
+head + body {
+	margin: 0;
+}
+head, script {
+	display: block;
+}
+
+body > .ui-loader {
+    display: none;
+}
+
+script:not([src]) {
+	position: relative;
+	float: right;
+	border: 1px solid #aaa;
+	padding: 5px 10px;
+	font: 10px monospace;
+    background: white;
+	background: rgba(255,255,255,.8);
+	width: auto;
+	max-width: 50%;
+	min-width: 360px;
+	white-space: pre-wrap;       /* css-3 */
+	word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+script:not([src]):before {
+	font: 600 20px/18px Helvetica;
+	color: #777;
+}
+head script:not([src]):before {
+	content: "head script\a";
+}
+body script:not([src]):before {
+	content: "body script\a";
+}
+
+h3 > .btn {
+	padding: 0 3px;
+	border-radius: 0;
+	line-height: 1.5;
+	vertical-align: middle;
+}
+.report-error {
+    background: crimson;
+    color: white;
+    padding: 10px;
+    margin: 10px -10px;
+    font-weight: 200;
+    -webkit-font-smoothing: antialiased;
+}
+.report-error dl {
+    margin: 0;
+}

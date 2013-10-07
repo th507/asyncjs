@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Load external script</title>
+<script src="assets/load-timing.js" async></script>
+<script src="assets/utils.js"></script>
+<script src="../lib/asyncjs.js"></script>
+<script>
+var q = asyncJS([
+    "http://code.highcharts.com/adapters/standalone-framework.js",
+    "https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"
+]);
+q.whenDone(function() {
+    log("Hello from jQuery:");
+    log(jQuery, "pre");
+    log("and HighChart:");
+    log(HighChart, "pre");
+    log("Function finished at: " + Date.now());
+});
+</script>
+<link href="assets/test.css" rel="stylesheet">
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<h3><span class="btn btn-success disabled">Best</span>DOMContentReady fires as soon as the DOM is parsed.</h3>
+<hr>
+</body>
+</html>

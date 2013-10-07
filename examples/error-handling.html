@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dealing with error</title>
+<script src="assets/load-timing.js" async></script>
+<script src="assets/utils.js"></script>
+<script src="../lib/asyncjs.js"></script>
+<script>
+var q = asyncJS([
+    "does-not-exists.js", 
+    function(){log("This works!");}, 
+    function() {this_does_not}
+], 
+function(queue, currentTaskIndex, errors) {
+    var msg = "";
+
+    errors.forEach(function(error) {
+        msg += "<dl class='dl-horizontal'>";
+        msg += "<dt class='error'>" + error.name + "</dt>";
+        msg += "<dd>" + error.message + "\t";
+        if (error.evt) msg += "Error triggered by event: " + error.evt;
+        msg += "</dd></dl>";
+    });
+    log("<div class='report-error'>" +
+        "Finished task with multiple errors:<br>" + msg + "</div>");
+});
+</script>
+<link href="assets/test.css" rel="stylesheet">
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<h3>Error handling</h3>
+<p>Catch almost all loading errors in <code>AsyncJS</code> callback.</p>
+<hr>
+</body>
+</html>

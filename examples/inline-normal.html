@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Load inline script</title>
+<script src="assets/load-timing.js" async></script>
+<script src="assets/utils.js"></script>
+<script src="../lib/asyncjs.js"></script>
+<link href="assets/test.css" rel="stylesheet">
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<h3><span class="btn btn-danger disabled">Normal</span>Script below external CSS blocks DOMReady.</h3>
+<p>Even script that does not change DOM blocks DOMContentReady.</p>
+<p>If the script requires some heavy computation, the time will add up and results in a lengthy load as well as DOMContentReady event.</p>
+<hr>
+<script>
+    sleep(1000);
+    log("wake up from sleep in " + from() + "ms");
+    log("Function finished at: " + Date.now());
+</script>
+</body>
+</html>
