@@ -23,9 +23,15 @@ Comparing to script.js and other script loader, the advantages of `asyncJS` are
 
 Latest version is 0.4.1
 
-* [Developement](https://raw.github.com/th507/asyncjs/master/lib/asyncjs.js) 12KB Uncompressed
-* [Production](https://raw.github.com/th507/asyncjs/master/dist/asyncjs.min.js) 1.08KB Minified and gziped
+### With npm
+````bash
+$ npm install async-js
+````
 
+### Direct Link
+
+* [**Developement**](https://raw.github.com/th507/asyncjs/master/lib/asyncjs.js) 12KB Uncompressed
+* [**Production**](https://raw.github.com/th507/asyncjs/master/dist/asyncjs.min.js) 1.08KB Minified and gziped
 
 # Browser Support
 Tested on
@@ -49,9 +55,9 @@ It should work on older browsers, but I can't find any legacy browser around me 
 	var data = computation();
 </script>
 <script src="jquery.js"></script>
-<script src="high-chart.js"></script>
+<script src="foo.js"></script>
 <script>
-	new HighChart(data, ...);
+	// do something with data, $, and foo.js
 </script>
 ````
 
@@ -64,8 +70,8 @@ External script is non-blocking, but inline script evaluation are still blocking
 var data = computation();
 
 asyncJS("jquery.js", function() {
-	asyncJS("high-chart.js", function() {
-		new HighChart(data, ...);
+	asyncJS("foo.js", function() {
+		// do something with data, $, and foo.js
 	}]);
 });
 ````
@@ -82,10 +88,10 @@ var q = asyncJS();
 // async evaluate time-consuming computation
 q.add(function() { data = computation(); });
 
-q.add(["jquery.js", "highchart-standalone.js"]);
+q.add(["jquery.js", "foo.js"]);
 
 q.whenDone(function() {
-	new HighChart(data, ...);
+	// do something with data, $, and foo.js
 });
 ````
 
@@ -130,7 +136,9 @@ asyncJS([
 ````
 	
 ### asyncJS#add(tasks)
-Add one or more tasks to the asynchronous loading queue and returns the queue. Note that `add` does not guarantee that added function is executed after the previous task. For sequential execution, use [async#addSync](#addSync) instead.
+Add async tasks.
+
+Note that `add` does not guarantee that added function is executed after the previous task. For sequential execution, use [async#addSync](#addSync) instead.
 
 ````javascript
 var q = asyncJS("jquery.js");
@@ -141,7 +149,9 @@ q.add("high-chart.js");
 Alias of [`then`](#then)
 
 ### asyncJS#then(tasks)[](id:then)
-Add one or more **synchronous** tasks to the loading queue, and returns the queue. `then` guarantee that added function is executed after the previous task.
+Add**synchronous** tasks.
+
+ `then` guarantee that added function is executed after the previous task.
 
 ````javascript
 var q = asyncJS("jquery.js");
