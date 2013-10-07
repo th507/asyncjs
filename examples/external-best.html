@@ -8,14 +8,14 @@
 <script src="../lib/asyncjs.js"></script>
 <script>
 var q = asyncJS([
-    "http://code.highcharts.com/adapters/standalone-framework.js",
-    "https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"
+    "https://cdnjs.cloudflare.com/ajax/libs/klass/1.0/klass.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"
 ]);
 q.whenDone(function() {
     log("Hello from jQuery:");
     log(jQuery, "pre");
-    log("and HighChart:");
-    log(HighChart, "pre");
+    log("and kclass:");
+    log(klass, "pre");
     log("Function finished at: " + Date.now());
 });
 </script>
