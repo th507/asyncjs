@@ -1,18 +1,13 @@
 {
-  "name": "asyncJS",
-  "description": "Slightly Deferent JavaScript loader and dependency manager",
-  "version": "0.4.0",
-  "main": "lib/asyncjs.js",
-  "scripts": [
-    "lib/asyncjs.js"
-  ],
-  "ignore": [
-  	"examples/"
-  ],
-  "license": "MIT"
+    "name": "async-js",
+    "description": "Slightly Deferent JavaScript loader and dependency manager",
+    "version": "0.4.0",
+    "main": "lib/asyncjs.js",
+    "scripts": [
+        "lib/asyncjs.js"
+        ],
+    "ignore": [
+        "examples/"
+        ],
+    "license": "MIT"
 }
-
-        
-        
-        
-        
