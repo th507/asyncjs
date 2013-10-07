@@ -124,7 +124,7 @@ Add one or more tasks to the asynchronous loading queue. Returns the queue.
 asyncJS("jquery.js")
 
 // accepts multiple tasks
-asyncJS(["jquery.js", "high-chart.js"])
+asyncJS(["jquery.js", "foo.js"])
 
 // accepts script string
 // and inline function
@@ -142,7 +142,7 @@ Note that `add` does not guarantee that added function is executed after the pre
 
 ````javascript
 var q = asyncJS("jquery.js");
-q.add("high-chart.js");
+q.add("foo.js");
 ````
 
 ### asyncJS#addSync(tasks)[](id:addSync)
