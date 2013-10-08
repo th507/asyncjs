@@ -15,7 +15,7 @@ Comparing to script.js and other script loader, the advantages of `asyncJS` are
 
 * support inline function and text string as JavaScript
 * handle error of the dependency queue
-* better looking syntax
+* better looking, chaining syntax
 * painlessly add async/sync task current queue (due to Defer-like design)
 * better nested dependency management
 
@@ -40,7 +40,7 @@ Tested on
 * Opera 15+
 * Safari 5+
 * Chrome 30+
-* Firefox 22+
+* Firefox 3.6.28+
 
 Test might fail in IE < 8, that is testing framework failing, not asyncjs. Examples run fine. However, `ConnectionError` is **NOT** catched in IE.
 
