@@ -12,13 +12,13 @@
 <body>
 <h3><span class="btn btn-danger disabled">Normal</span>DOMContentReady fires when all external files are fetched.</h3>
 <hr>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/klass/1.0/klass.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script src="http://www.google-analytics.com/ga.js"></script>
 <script>
 log("Hello from jQuery:");
 log(jQuery, "pre");
-log("and kclass:");
-log(kclass, "pre");
+log("and ga");
+log(_gaq, "pre");
 log("Function finished at: " + Date.now());
 </script>
 </body>

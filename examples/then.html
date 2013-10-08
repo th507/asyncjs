@@ -8,32 +8,27 @@
 <script src="../lib/asyncjs.js"></script>
 <script>
 var q = null;
-var j = "https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js";
-var b = "https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js";
-var m = "https://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.3.2/jquery.mobile.min.js";
+var j = "http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js";
+var g = "http://www.google-analytics.com/ga.js";
 var i = 0;
 
 q = asyncJS(j);
 q.whenDone(function () {
-    log(++i + ". before adding bootstrap");
+    log(++i + ". before adding ga");
     log("jQuery: " + !!jQuery + 
-    "\n$.fn.emulateTransitionEnd: " +
-    !!$.fn.emulateTransitionEnd + 
-    "\n$.mobile: " +
-    !!$.mobile, "pre");
+    "\nga: " +
+    ("_gaq" in window), "pre");
 
 });
 
 // then blocks all follow whenDone callbacks
-q.then([b, m]);
+q.then(g);
 
 q.whenDone(function () {
-    log(++i + ". after adding bootstrap");
+    log(++i + ". after adding ga");
     log("jQuery: " + $.fn.jquery +
-    "\n$.fn.emulateTransitionEnd: " +
-    !!$.fn.emulateTransitionEnd +
-    "\n$.mobile.version: " +
-    $.mobile.version, "pre");
+    "\nga: " +
+    ("_gaq" in window), "pre");
 });
 
 q.whenDone(function () {

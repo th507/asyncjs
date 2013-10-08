@@ -14,14 +14,15 @@ var q = asyncJS([
 ], 
 function(queue, currentTaskIndex, errors) {
     var msg = "";
-
-    errors.forEach(function(error) {
+    var error;
+    for (var i = 0; i < errors.length; i++) {
+        error = errors[i];
         msg += "<dl class='dl-horizontal'>";
         msg += "<dt class='error'>" + error.name + "</dt>";
         msg += "<dd>" + error.message + "\t";
         if (error.evt) msg += "Error triggered by event: " + error.evt;
         msg += "</dd></dl>";
-    });
+    }
     log("<div class='report-error'>" +
         "Finished task with multiple errors:<br>" + msg + "</div>");
 });

@@ -8,14 +8,14 @@
 <script src="../lib/asyncjs.js"></script>
 <script>
 var q = asyncJS([
-    "https://cdnjs.cloudflare.com/ajax/libs/klass/1.0/klass.js",
-    "https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"
+    "http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js",
+    "http://www.google-analytics.com/ga.js"
 ]);
 q.whenDone(function() {
     log("Hello from jQuery:");
     log(jQuery, "pre");
-    log("and kclass:");
-    log(klass, "pre");
+    log("and _gaq:");
+    log(_gaq, "pre");
     log("Function finished at: " + Date.now());
 });
 </script>

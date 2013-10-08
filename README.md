@@ -21,7 +21,7 @@ Comparing to script.js and other script loader, the advantages of `asyncJS` are
 
 # Download
 
-Latest version is 0.4.2
+Latest version is 0.4.3
 
 ### With npm
 ````bash
@@ -36,11 +36,13 @@ $ npm install async-js
 # Browser Support
 Tested on
 
-* IE 8+
+* IE 6+ [^1]
 * Opera 15+
 * Safari 5+
 * Chrome 30+
 * Firefox 27+
+
+[^1]: Test might fail in IE < 8, that is Mocha or Chai failing, not asyncjs. Examples run fine.But ConnectionError is **NOT** catched in IE.
 
 It should work on older browsers, but I can't find any legacy browser around me at the time. I will update the support sheet after I test it on more browsers.
 

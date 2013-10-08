@@ -4,7 +4,11 @@ function log(msg, pre) {
 		if (pre) msg = "<pre>" + msg + "</pre>";
 		document.body.innerHTML += msg + "<br>";
 	} catch(e) {
-		console.log(msg);
+		try {
+            console.log(msg);
+        } catch(e) {
+            alert(msg);
+        }
 	}
 }
 
