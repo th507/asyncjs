@@ -36,15 +36,13 @@ $ npm install async-js
 # Browser Support
 Tested on
 
-* IE 6+ [^1]
+* IE 6+
 * Opera 15+
 * Safari 5+
 * Chrome 30+
-* Firefox 27+
+* Firefox 22+
 
-[^1]: Test might fail in IE < 8, that is Mocha or Chai failing, not asyncjs. Examples run fine.But ConnectionError is **NOT** catched in IE.
-
-It should work on older browsers, but I can't find any legacy browser around me at the time. I will update the support sheet after I test it on more browsers.
+Test might fail in IE < 8, that is testing framework failing, not asyncjs. Examples run fine. However, `ConnectionError` is **NOT** catched in IE.
 
 # Example
 
