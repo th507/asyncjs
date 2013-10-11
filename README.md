@@ -21,7 +21,7 @@ Comparing to script.js and other script loader, the advantages of `asyncJS` are
 
 # Download
 
-Latest version is 0.4.4
+Latest version is 0.4.5
 
 ### With npm
 ````bash
@@ -30,8 +30,11 @@ $ npm install async-js
 
 ### Direct Link
 
+Inline `asyncJS` yields better performance.
+
 * [**Developement**](https://raw.github.com/th507/asyncjs/master/lib/asyncjs.js) 14KB Uncompressed
-* [**Production**](https://raw.github.com/th507/asyncjs/master/dist/asyncjs.min.js) 1.11KB Minified and gziped
+* [**Production**](https://raw.github.com/th507/asyncjs/master/dist/asyncjs.min.js) 1.2KB Minified and gziped
+
 
 # Browser Support
 Tested on
