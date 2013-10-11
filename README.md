@@ -21,7 +21,7 @@ Comparing to script.js and other script loader, the advantages of `asyncJS` are
 
 # Download
 
-Latest version is 0.4.3
+Latest version is 0.4.4
 
 ### With npm
 ````bash
@@ -30,8 +30,8 @@ $ npm install async-js
 
 ### Direct Link
 
-* [**Developement**](https://raw.github.com/th507/asyncjs/master/lib/asyncjs.js) 12KB Uncompressed
-* [**Production**](https://raw.github.com/th507/asyncjs/master/dist/asyncjs.min.js) 1.08KB Minified and gziped
+* [**Developement**](https://raw.github.com/th507/asyncjs/master/lib/asyncjs.js) 14KB Uncompressed
+* [**Production**](https://raw.github.com/th507/asyncjs/master/dist/asyncjs.min.js) 1.11KB Minified and gziped
 
 # Browser Support
 Tested on
@@ -184,7 +184,7 @@ For example, calling `queue.add(…)` inside `whenDone`  will cause an infinite 
 In practice, never change the queue/q inside callback. Use `addSync` if you would like to add a dependent task.
  
 # Build
-AsyncJS can be minified with Google Closure Compiler using advanced optimization (with a few warnings due to the `factory` method). Or it could be minified with UglifyJS2 by
+AsyncJS can be minified with Google Closure Compiler using advanced optimization if externs are provided in compilation. Or it could be minified with UglifyJS2 by
 
 ````bash
 $ npm install
