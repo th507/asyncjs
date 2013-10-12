@@ -152,7 +152,7 @@ q.add("foo.js");
 Alias of [`then`](#then)
 
 ### asyncJS#then(tasks)[](id:then)
-Add**synchronous** tasks.
+Add **synchronous** tasks.
 
  `then` guarantee that added function is executed after the previous task.
 
@@ -180,7 +180,7 @@ q.whenDone(function(queue, taskIndex, errors) {
 })
 ````
 
-** Manipulate queue/q inside `whenDone` might crash the page.**
+**Manipulate queue/q inside `whenDone` might crash the page.**
 
 For example, calling `queue.add(…)` inside `whenDone`  will cause an infinite loop of re-adding the task after the same task is add and executed, which will eventually bring down the entire page.
 
