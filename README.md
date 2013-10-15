@@ -21,7 +21,7 @@ Comparing to script.js and other script loader, the advantages of `asyncJS` are
 
 # Download
 
-Latest version is 0.5.1
+Latest version is 0.5.2
 
 ### With npm
 ````bash
