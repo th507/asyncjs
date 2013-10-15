@@ -1,6 +1,6 @@
 {
     "name": "async-js",
-    "version": "0.5.0",
+    "version": "0.5.1",
     "description": "Slightly Deferent JavaScript loader and dependency manager",
     "keyword": ["javascript-loader", "async", "queue", "browser"],
     "main": "lib/asyncjs.js",

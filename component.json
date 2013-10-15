@@ -1,7 +1,7 @@
 {
     "name": "async-js",
     "description": "Slightly Deferent JavaScript loader and dependency manager",
-    "version": "0.5.0",
+    "version": "0.5.1",
     "main": "lib/asyncjs.js",
     "scripts": [
         "lib/asyncjs.js"
