@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Load inline script</title>
+<script src="assets/utils.js"></script>
+<script src="assets/load-timing.js"></script>
+<script src="../lib/asyncjs.js"></script>
+<link href="assets/test.css" rel="stylesheet">
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<h3><span class="btn btn-warning disabled">Better</span>Use <code>AsyncJS</code> below CSS could make DOMContentReady fire earlier</h3>
+<p>At least lengthy script evaluation will not block DOMContentReady.</p>
+<hr>
+<script>
+var foo = window.foo = "foo";
+asyncJS([
+        function() {
+            sleep(10000);
+            console.log("block-" + from());
+            console.log(self.foo);
+        },
+        function() {
+            setTimeout( function() {
+                console.log("timeout-" + from());
+            }, 1000);
+        },
+        function() {
+            console.log("usual-" + from());
+        }
+], function() {
+	log("wake up from sleep in " + from() + "ms");
+	log("Function finished at: " + Date.now());
+});
+</script>
+</body>
+</html>
