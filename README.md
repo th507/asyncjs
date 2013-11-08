@@ -19,6 +19,9 @@ Comparing to script.js and other script loader, the advantages of `asyncJS` are
 * painlessly add async/sync task current queue (due to Defer-like design)
 * better nested dependency management
 
+Read about [why asyncJS improves performance](http://ljw.me/2013/10/20/asyncjs.html) (in Chinese) on my blog.
+
+
 # Download
 
 Latest version is 0.5.6
