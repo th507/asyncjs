@@ -152,7 +152,7 @@ When adding asynchronous function, call `resolver.resolve` when data is ready.
 
 Use `AsyncQueue#add(fn, name)` to add an asynchronous function to the queue and restore its return value in q.data[name].
 
-* For URL, text string or synchronous function:
+#### For URL, text string or synchronous function:
 
 ````javascript
 var q = asyncJS("jquery.js");
@@ -162,7 +162,7 @@ q.add(function() {
 })
 ````
 
-* For asynchronous function:
+#### For asynchronous function:
 
 ````javascript
 // adding task
