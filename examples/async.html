@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>adding async function</title>
+<script src="assets/utils.js"></script>
+<script src="assets/load-timing.js"></script>
+<script src="../lib/asyncjs.js"></script>
+<script>
+var q = null;
+window.Foo = {}
+var i = 0;
+
+q = asyncJS();
+
+q.add(function(resolver) {
+    setTimeout(function() {
+        window.Foo.bar = "bar";
+        ++i;
+        resolver.resolve("bar");
+    }, 5);
+}, "bar");
+
+q.whenDone(function (queue) {
+	log("window.Foo.bar is now: " + window.Foo.bar);
+    log("Return value stored in asyncJS: " + queue.data.bar);
+    log(++i + ". another callback after add<br>");
+});
+</script>
+<link href="assets/test.css" rel="stylesheet">
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<h3>adding async function</h3>
+<p>When adding asynchronous function, call <code>resolver.resolve</code> when data is ready.</p>
+<p>Use <code>q.add(fn, name)</code> to add <code>fn</code> to the queue, and restore its return value in <code>q.data[name]</code></p>
+<hr>
+</body>
+</html>

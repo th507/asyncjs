@@ -2,6 +2,8 @@
 
 [![Continuous Integration status](https://secure.travis-ci.org/th507/asyncjs.png)](http://travis-ci.org/th507/asyncjs)
 
+[![NPM version](https://badge.fury.io/js/async-js.png)](http://badge.fury.io/js/async-js)
+
 `asyncJS` is a slightly deferent JavaScript loader and dependency manager for browsers. Unlike many other script loaders, asyncJS can asynchronously load inline functions and script strings as well as external JavaScript files. 
 
 `asyncJS` uses a Defer-like queue to keep track of tasks, allowing you to append additional tasks, attaching extra callbacks, and handling error inside callbacks, making it a more versatile and robust solution for complex dependency management.
@@ -24,7 +26,7 @@ Read about [why asyncJS improves performance](http://ljw.me/2013/10/20/asyncjs.h
 
 # Download
 
-Latest version is 0.5.6
+Latest version is 0.7.0
 
 ### With npm
 ````bash
@@ -35,8 +37,8 @@ $ npm install async-js
 
 Inline `asyncJS` yields better performance.
 
-* [**Developement**](https://raw.github.com/th507/asyncjs/master/lib/asyncjs.js) 14KB Uncompressed
-* [**Production**](https://raw.github.com/th507/asyncjs/master/dist/asyncjs.min.js) 1.28KB Minified and gziped
+* [**Developement**](https://raw.github.com/th507/asyncjs/master/lib/asyncjs.js) 15KB Uncompressed
+* [**Production**](https://raw.github.com/th507/asyncjs/master/dist/asyncjs.min.js) 1.41KB Minified and gziped
 
 
 # Browser Support
@@ -142,20 +144,48 @@ asyncJS([
 ````
 	
 ### asyncJS#add(tasks)
-Add async tasks.
+Add non-blocking tasks. It supports external URL, inline function and text string as JavaScript.
 
 Note that `add` does not guarantee that added function is executed after the previous task. For sequential execution, use [async#addSync](#addSync) instead.
+
+When adding asynchronous function, call `resolver.resolve` when data is ready.
+
+Use `AsyncQueue#add(fn, name)` to add an asynchronous function to the queue and restore its return value in q.data[name].
+
+* For URL, text string or synchronous function:
 
 ````javascript
 var q = asyncJS("jquery.js");
 q.add("foo.js");
+q.add(function() {
+	// synchronous function
+})
 ````
 
-### asyncJS#addSync(tasks)[](id:addSync)
-Alias of [`then`](#then)
+* For asynchronous function:
+
+````javascript
+// adding task
+q.add(function(resolver) {
+	setTimeout(function() {
+		// when asyn function finished
+		// value is stored in q.data[name]
+		resolver.resolve(value);
+		
+		// when things go south
+		resolver.reject(error);
+	}, 5);
+}, "timeout");
+
+// using returned value
+q.whenDone(function(queue) {
+	// using previously returned value
+	var value = queue.data.timeout;
+})
+````
 
 ### asyncJS#then(tasks)[](id:then)
-Add **synchronous** tasks.
+Add **blocking** tasks.
 
  `then` guarantee that added function is executed after the previous task.
 

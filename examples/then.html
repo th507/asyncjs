@@ -15,10 +15,9 @@ var i = 0;
 q = asyncJS(j);
 q.whenDone(function () {
     log(++i + ". before adding ga");
-    log("jQuery: " + !!jQuery + 
+    log("jQuery: " + $.fn.jquery +
     "\nga: " +
     ("_gaq" in window), "pre");
-
 });
 
 // then blocks all follow whenDone callbacks
@@ -40,7 +39,6 @@ q.whenDone(function () {
 </head>
 <body>
 <h3><code>then</code> blocks all following callbacks</h3>
-<p></p>
 <hr>
 </body>
 </html>
