@@ -78,19 +78,104 @@ suite('Executing Callbacks', function(){
     });
 
     test("Async function without return value", function(done) {
-
         var q = asyncJS();
+        var job = sinon.spy();
+        var asyncJob = sinon.spy();
 
         q.add(function(resolver) {
-            resolver.resolve(null);
-
+            setTimeout(function() {
+                asyncJob.call(null);
+                resolver.resolve(null);
+            }, 5);
         },'OMITTED');
 
-        q.whenDone(function (r) {
-            assert.equal(JSON.stringify(r.data), '{}');
+        q.add(job);
+
+        q.whenDone(function (data) {
+            assert.equal('{}', JSON.stringify(data));
+            assert(job.called);
+            assert(asyncJob.called);
+            done();
+        });
+    });
+
+    test("Async function with return value", function(done) {
+        var q = asyncJS();
+
+        window.Foo = {};
+
+        q.add(function(resolver) {
+            resolver.resolve(1);
+        },"demo1");
+
+        q.add(function(resolver) {
+            setTimeout(function() {
+                resolver.resolve(2);
+            }, 5);
+        },"demo2");
+
+        q.add(function(resolver) {
+            setTimeout(function() {
+                resolver.resolve(3);
+            }, 5);
+        },"demo3");
+
+        q.whenDone(function (data) {
+            assert.equal("1", data.demo1);
+            assert.equal("2", data.demo2);
+            assert.equal("3", data.demo3);
             done();
         });
 
+    });
+
+    test("Mixing async functions and sync functions", function(done) {
+        var q = asyncJS();
+
+        window.Foo = {};
+
+        q.add(function(resolver) {
+            resolver.resolve(1);
+        },"demo1");
+
+
+        q.add(function(resolver) {
+            setTimeout(function() {
+                Foo.bar = "bar"
+                resolver.resolve(null);
+            }, 10);
+
+        }, "demo2");
+
+        q.whenDone(function (data) {
+            assert.equal("1", data.demo1);
+            assert.equal(null, data.demo2);
+            assert.equal("bar", window.Foo.bar);
+            done();
+        });
+
+    });
+
+
+    test("Adding Async function with #then", function(done) {
+        var q = asyncJS();
+        var job = sinon.spy();
+        var asyncJob = sinon.spy();
+
+        q.add(job);
+
+        q.then(function(resolver) {
+            setTimeout(function() {
+                asyncJob.call(null);
+                resolver.resolve();
+            }, 10);
+        } , "OMITTED");
+
+        q.whenDone(function () {
+            assert(job.called);
+            assert(asyncJob.called);
+            done();
+        });
     });
 
 /*

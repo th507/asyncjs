@@ -16,17 +16,19 @@ That's why I created `asyncJS`.
 Comparing to script.js and other script loader, the advantages of `asyncJS` are
 
 * support inline function and text string as JavaScript
+* support asynchronous functions (such as AJAX request) with Promise-like `resolver`
 * handle error of the dependency queue
 * better looking, chaining syntax
 * painlessly add async/sync task current queue (due to Defer-like design)
 * better nested dependency management
 
-Read about [why asyncJS improves performance](http://ljw.me/2013/10/20/asyncjs.html) (in Chinese) on my blog.
+With `asyncJS`, you could start requesting AJAX content before any of the external script is loaded. When your JavaScript is ready, just parse the content and present your content to the user with shorter waiting period.
 
+Read about [why asyncJS improves performance](http://ljw.me/2013/10/20/asyncjs.html) (in Chinese) on my blog.
 
 # Download
 
-Latest version is 0.7.1
+Latest version is 0.7.2
 
 ### With npm
 ````bash
@@ -206,8 +208,8 @@ Add callback to execute when all **previous** tasks are finished. `taskIndex` is
 ````javascript
 var q = asyncJS("jquery.js");
 
-q.whenDone(function(queue, taskIndex, errors) {
-	// queue is the current loading queue
+q.whenDone(function(data, taskIndex, errors) {
+	// data is the accumulative returned values of current loading queue
 	// taskIndex is the index of last finished task
 	// errors is the accumulative errors in execution
 })

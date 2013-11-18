@@ -21,9 +21,9 @@ q.add(function(resolver) {
     }, 5);
 }, "bar");
 
-q.whenDone(function (queue) {
+q.whenDone(function (data) {
 	log("window.Foo.bar is now: " + window.Foo.bar);
-    log("Return value stored in asyncJS: " + queue.data.bar);
+    log("Return value stored in asyncJS: " + data.bar);
     log(++i + ". another callback after add<br>");
 });
 </script>

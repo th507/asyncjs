@@ -12,7 +12,7 @@ var q = asyncJS([
     function(){log("This works!");}, 
     function() {this_does_not}
 ], 
-function(queue, currentTaskIndex, errors) {
+function(data, currentTaskIndex, errors) {
     var msg = "";
     var error;
     for (var i = 0; i < errors.length; i++) {
