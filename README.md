@@ -22,13 +22,13 @@ Comparing to script.js and other script loader, the advantages of `asyncJS` are
 * painlessly add async/sync task current queue (due to Defer-like design)
 * better nested dependency management
 
-With `asyncJS`, you could start requesting AJAX content before any of the external script is loaded. When your JavaScript is ready, just parse the content and present your content to the user with shorter waiting period.
+Just like `Promise`, request AJAX content and load external scripts are carried out in parallel. When `asyncJS` finishes all pending tasks, you could just parse the content and present your content to the user with shorter waiting period.
 
 Read about [why asyncJS improves performance](http://ljw.me/2013/10/20/asyncjs.html) (in Chinese) on my blog.
 
 # Download
 
-Latest version is 0.7.2
+Latest version is 0.7.3
 
 ### With npm
 ````bash
