@@ -167,7 +167,7 @@ q.add(function() {
 #### For asynchronous function:
 
 ````javascript
-// adding task
+// adding an async function
 q.add(function(resolver) {
 	setTimeout(function() {
 		// when asyn function finished
@@ -179,10 +179,10 @@ q.add(function(resolver) {
 	}, 5);
 }, "timeout");
 
-// using returned value
-q.whenDone(function(queue) {
+// using returned values
+q.whenDone(function(data) {
 	// using previously returned value
-	var value = queue.data.timeout;
+	var value = data.timeout;
 })
 ````
 
