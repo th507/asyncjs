@@ -1,7 +1,6 @@
 # asyncJS - Slightly Deferent JavaScript loader and dependency manager
 
 [![Continuous Integration status](https://secure.travis-ci.org/th507/asyncjs.png)](http://travis-ci.org/th507/asyncjs)
-
 [![NPM version](https://badge.fury.io/js/async-js.png)](http://badge.fury.io/js/async-js)
 
 `asyncJS` is a slightly deferent JavaScript loader and dependency manager for browsers. Unlike many other script loaders, asyncJS can asynchronously load inline functions and script strings as well as external JavaScript files. 
