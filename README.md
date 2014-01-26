@@ -27,7 +27,7 @@ Read about [why asyncJS improves performance](http://ljw.me/2013/10/20/asyncjs.h
 
 # Download
 
-Latest version is 0.7.4
+Latest version is 0.7.5
 
 ### With npm
 ````bash
