@@ -27,7 +27,7 @@ Read about [why asyncJS improves performance](http://ljw.me/2013/10/20/asyncjs.h
 
 # Download
 
-Latest version is 0.7.5
+Latest version is 0.7.6
 
 ### With npm
 ````bash
@@ -56,7 +56,7 @@ Test might fail in IE < 8, that is testing framework failing, not asyncjs. Examp
 # Example
 
 ### Old way
- Inline script evaluation blocks following script, and external script blocks `DOMContentReady`
+ Inline script evaluation blocks following script, and external script blocks `DOMContentLoaded`
 
 ````html
 <script>
