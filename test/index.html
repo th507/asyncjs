@@ -21,7 +21,7 @@
 
 <script>
     mocha.checkLeaks();
-    mocha.globals(["Foo", "WebFont", "webfont", "matchMedia", "jQuery*", "$", "throwLater"]);
+    mocha.globals(["Foo", "WebFont", "WebView", "webfont", "matchMedia", "jQuery*", "$", "throwLater"]);
 
     if (window.mochaPhantomJS) mochaPhantomJS.run();
     else mocha.run();

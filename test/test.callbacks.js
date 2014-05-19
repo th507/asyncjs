@@ -1,6 +1,6 @@
-/*global suite, test, assert, asyncJS*/
+/*global suite, test, assert, sinon, asyncJS*/
 suite('Executing Callbacks', function(){
-    /*jshint laxcomma:true, unused:false*/
+    /*jshint laxcomma:true, unused:false, curly:false*/
 
     test("...in an empty queue", function(done) {
         var q = asyncJS();
@@ -59,14 +59,14 @@ suite('Executing Callbacks', function(){
         q.whenDone(function() {
             assert(Date.now() - begin >= 1000);
             done();
-        })
+        });
     });
 
     test("...after external script", function(done) {
         this.timeout(10000);
 
         var job = sinon.spy();
-        var jq = "https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"
+        var jq = "https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js";
 
         var q = asyncJS([jq, job]);
 
@@ -74,7 +74,7 @@ suite('Executing Callbacks', function(){
             assert(job.called);
             assert(!!window.jQuery);
             done();
-        })
+        });
     });
 
     test("Async function without return value", function(done) {
@@ -130,6 +130,7 @@ suite('Executing Callbacks', function(){
     });
 
     test("Mixing async functions and sync functions", function(done) {
+        /*global Foo*/
         var q = asyncJS();
 
         window.Foo = {};
@@ -141,7 +142,7 @@ suite('Executing Callbacks', function(){
 
         q.add(function(resolver) {
             setTimeout(function() {
-                Foo.bar = "bar"
+                Foo.bar = "bar";
                 resolver.resolve(null);
             }, 10);
 
@@ -174,6 +175,34 @@ suite('Executing Callbacks', function(){
         q.whenDone(function () {
             assert(job.called);
             assert(asyncJob.called);
+            done();
+        });
+    });
+
+    test("Async function which calls resolver.resolve multiple times", function(done) {
+        var q = asyncJS();
+        var job = sinon.spy();
+        var asyncJob = sinon.spy();
+
+        q.add(function(resolver) {
+            setTimeout(function() {
+                asyncJob.call(null);
+                resolver.resolve(null);
+            }, 5);
+
+            setTimeout(function() {
+                asyncJob.call(null);
+                resolver.resolve(null);
+            }, 200);
+        },'OMITTED');
+
+        q.add(job);
+
+        q.whenDone(function (data) {
+            assert.equal('{}', JSON.stringify(data));
+            assert(job.called);
+            assert(asyncJob.called);
+            assert.equal(q.errors.length, 0);
             done();
         });
     });
