@@ -51,7 +51,7 @@ Tested on
 * Chrome 30+
 * Firefox 3.6.28+
 
-Test might fail in IE < 8, that is testing framework failing, not asyncjs. Examples run fine. However, `ConnectionError` is **NOT** catched in IE.
+Test might fail in IE < 8, that is testing framework failing, not asyncjs. Examples run fine. However, `ConnectionError` is **NOT** caught in IE.
 
 # Example
 
